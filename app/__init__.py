@@ -14,6 +14,11 @@ def create_app():
     app.config.from_object(Config)
 
     db.init_app(app)
+    from app import models
+    
+    with app.app_context():  # สร้าง Application Context
+        models.create_table()  # เรียกใช้งานเพื่อสร้างตาราง
+
     jwt.init_app(app)
     migrate = Migrate(app, db)
 
