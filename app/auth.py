@@ -14,8 +14,13 @@ def login():
     user = User.query.filter_by(username=username).first()
     if user and check_password_hash(user.password, password):
         access_token = create_access_token(identity=username)
+        print("Received username:", username)  # สั่งปริ้น username ที่รับมา
+        print("Received password:", password)  # สั่งปริ้น password ที่รับมา
+        print("ok")  # สั่งปริ้น password ที่รับมา
         return jsonify({"msg": "Login successful", "access_token": access_token})
+    print("Invalid username or password")  # สั่งปริ้นถ้าชื่อผู้ใช้หรือรหัสผ่านไม่ถูกต้อง
     return jsonify({"msg": "Bad username or password"}), 401
+
 
 
 
