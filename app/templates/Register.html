@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Page</title>
+    <title>Register Page</title>
     <style>
         body {
             display: flex;
@@ -15,17 +15,21 @@
             background-color: #f0f0f0; /* ตั้งค่าสีพื้นหลัง */
         }
 
-        .login-container {
+        .register-container {
             display: flex;
             flex-direction: column; /* จัดให้เป็นคอลัมน์ */
             align-items: center; /* จัดให้อยู่ตรงกลางในแนวแกน X */
-            background-color: #fff; /* สีพื้นหลังของกล่องล็อกอิน */
+            background-color: #fff; /* สีพื้นหลังของกล่องลงทะเบียน */
             padding: 20px; /* ระยะห่างภายในกล่อง */
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เงาของกล่อง */
             border-radius: 8px; /* มุมกล่องโค้งมน */
+            width: 320px; /* ความกว้างของกล่อง */
+            box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
         }
 
-        .login-container input[type="text"], .login-container input[type="password"] {
+        .register-container input[type="text"],
+        .register-container input[type="password"],
+        .register-container input[type="date"] {
             margin-bottom: 15px; /* ระยะห่างระหว่างช่องกรอกข้อมูล */
             padding: 10px; /* ระยะห่างภายในช่องกรอกข้อมูล */
             width: 100%; /* ความกว้างของช่องกรอกข้อมูล */
@@ -34,42 +38,56 @@
             box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
         }
 
-        .login-container button {
+        .name-surname-container {
+            display: flex; /* จัดให้อยู่ในแถวเดียวกัน */
+            justify-content: space-between; /* กระจายช่องว่างระหว่างช่องกรอกข้อมูล */
+            width: 100%; /* ความกว้างเต็มของคอนเทนเนอร์ */
+        }
+
+        .name-surname-container input {
+            width: 48%; /* ความกว้าง 48% ของช่องกรอกข้อมูลในแต่ละช่อง */
+        }
+
+        .register-container select {
+            margin-bottom: 15px; /* ระยะห่างระหว่างช่องกรอกข้อมูล */
+            padding: 10px; /* ระยะห่างภายในช่องกรอกข้อมูล */
+            width: 100%; /* ความกว้างของช่องกรอกข้อมูล */
+            border: 1px solid #ccc; /* เส้นขอบของช่องกรอกข้อมูล */
+            border-radius: 4px; /* มุมของช่องกรอกข้อมูลโค้งมน */
+            box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
+        }
+
+        .register-container button {
             padding: 10px; /* ระยะห่างภายในปุ่ม */
             width: 100%; /* ความกว้างของปุ่ม */
-            background-color: #007BFF; /* สีพื้นหลังของปุ่ม */
+            background-color: #28a745; /* สีพื้นหลังของปุ่ม */
             border: none; /* ไม่มีเส้นขอบ */
             border-radius: 4px; /* มุมปุ่มโค้งมน */
             color: white; /* สีของข้อความในปุ่ม */
             font-size: 16px; /* ขนาดของข้อความในปุ่ม */
             cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ */
         }
-
-        .login-container .register {
-            margin-top: 10px; /* ระยะห่างด้านบน */
-            background: none; /* ไม่มีพื้นหลัง */
-            border: none; /* ไม่มีเส้นขอบ */
-            color: #007BFF; /* สีของข้อความ */
-            text-decoration: underline; /* ขีดเส้นใต้ข้อความ */
-            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ */
-        }
     </style>
 </head>
 <body>
-    <div class="login-container">
+    <div class="register-container">
         <input type="text" placeholder="ID"> <!-- ช่องกรอกข้อมูล ID -->
         <input type="password" placeholder="Password"> <!-- ช่องกรอกข้อมูล Password -->
-        <button type="button" onclick="goToHomePage()">Login</button> <!-- ปุ่ม Login -->
-        <button class="register" onclick="goToRegisterPage()">Registerr</button> <!-- ปุ่ม Register แบบไม่มีกรอบ -->
+        <div class="name-surname-container">
+            <input type="text" placeholder="Name"> <!-- ช่องกรอกข้อมูล Name -->
+            <input type="text" placeholder="Surname"> <!-- ช่องกรอกข้อมูล Surname -->
+        </div>
+        <input type="date" placeholder="Birthday"> <!-- ช่องกรอกข้อมูล Birthday -->
+        <select>
+            <option value="female">Female</option> <!-- ตัวเลือก Female -->
+            <option value="male">Male</option> <!-- ตัวเลือก Male -->
+        </select>
+        <button type="button" onclick="goToLoginPage()">Sign Up</button> <!-- ปุ่ม Sign Up -->
     </div>
 
     <script>
-        function goToHomePage() {
-            window.location.href = "finish.html"; /* เปลี่ยน URL ไปยังหน้า Home */
-        }
-
-        function goToRegisterPage() {
-            window.location.href = "register.html"; /* เปลี่ยน URL ไปยังหน้า Register */
+        function goToLoginPage() {
+            window.location.href = "Login.html"; /* เปลี่ยน URL ไปยังหน้า Login */
         }
     </script>
 </body>
