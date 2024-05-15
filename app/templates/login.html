@@ -1,38 +1,76 @@
-{% extends "base.html" %}
-
-{% block title %}Login{% endblock %}
-
-{% block content %}
-<h2>Login</h2>
-<form id="login-form" method="POST">
-    <label for="username">Username:</label>
-    <input type="text" id="username" name="username">
-    <br>
-    <label for="password">Password:</label>
-    <input type="password" id="password" name="password">
-    <br>
-    <button type="submit">Login</button>
-</form>
-<script>
-    document.getElementById('login-form').addEventListener('submit', async function(event) {
-        event.preventDefault();
-        const formData = new FormData(event.target);
-        const data = Object.fromEntries(formData.entries());
-
-        const response = await fetch('/login', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(data)
-        });
-
-        const result = await response.json();
-        if (response.ok) {
-            alert('Login successful');
-        } else {
-            alert('Login failed: ' + result.msg);
+<!DOCTYPE html>
+<html lang="th">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center; /* จัดให้อยู่กลางหน้าจอในแนวนอน */
+            align-items: center; /* จัดให้อยู่กลางหน้าจอในแนวตั้ง */
+            height: 100vh; /* ตั้งค่าให้มีความสูงเต็มหน้าจอ */
+            margin: 0; /* ตั้งค่า margin เป็น 0 เพื่อให้แนบกับขอบของหน้าจอ */
+            font-family: Arial, sans-serif; /* ตั้งค่าฟอนต์ */
+            background-color: #f0f0f0; /* ตั้งค่าสีพื้นหลัง */
         }
-    });
-</script>
-{% endblock %}
+
+        .login-container {
+            display: flex;
+            flex-direction: column; /* จัดให้เป็นคอลัมน์ */
+            align-items: center; /* จัดให้อยู่ตรงกลางในแนวแกน X */
+            background-color: #fff; /* สีพื้นหลังของกล่องล็อกอิน */
+            padding: 20px; /* ระยะห่างภายในกล่อง */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เงาของกล่อง */
+            border-radius: 8px; /* มุมกล่องโค้งมน */
+        }
+
+        .login-container input[type="text"], .login-container input[type="password"] {
+            margin-bottom: 15px; /* ระยะห่างระหว่างช่องกรอกข้อมูล */
+            padding: 10px; /* ระยะห่างภายในช่องกรอกข้อมูล */
+            width: 100%; /* ความกว้างของช่องกรอกข้อมูล */
+            border: 1px solid #ccc; /* เส้นขอบของช่องกรอกข้อมูล */
+            border-radius: 4px; /* มุมของช่องกรอกข้อมูลโค้งมน */
+            box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
+        }
+
+        .login-container button {
+            padding: 10px; /* ระยะห่างภายในปุ่ม */
+            width: 100%; /* ความกว้างของปุ่ม */
+            background-color: #007BFF; /* สีพื้นหลังของปุ่ม */
+            border: none; /* ไม่มีเส้นขอบ */
+            border-radius: 4px; /* มุมปุ่มโค้งมน */
+            color: white; /* สีของข้อความในปุ่ม */
+            font-size: 16px; /* ขนาดของข้อความในปุ่ม */
+            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ */
+        }
+
+        .login-container .register {
+            margin-top: 10px; /* ระยะห่างด้านบน */
+            background: none; /* ไม่มีพื้นหลัง */
+            border: none; /* ไม่มีเส้นขอบ */
+            color: #007BFF; /* สีของข้อความ */
+            text-decoration: underline; /* ขีดเส้นใต้ข้อความ */
+            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ */
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <input type="text" placeholder="ID"> <!-- ช่องกรอกข้อมูล ID -->
+        <input type="password" placeholder="Password"> <!-- ช่องกรอกข้อมูล Password -->
+        <button type="button" onclick="goToHomePage()">Login</button> <!-- ปุ่ม Login -->
+        <button class="register" onclick="goToRegisterPage()">Registerr</button> <!-- ปุ่ม Register แบบไม่มีกรอบ -->
+    </div>
+
+    <script>
+        function goToHomePage() {
+            window.location.href = "finish.html"; /* เปลี่ยน URL ไปยังหน้า Home */
+        }
+
+        function goToRegisterPage() {
+            window.location.href = "register"; /* เปลี่ยน URL ไปยังหน้า Register */
+        }
+    </script>
+</body>
+</html>
