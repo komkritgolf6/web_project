@@ -3,7 +3,8 @@ from flask_jwt_extended import create_access_token
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.models import User
 from app import db
-from .OTP import generate_otp
+from .OTP import generate_otp, send_otp_to_email
+
 
 bp = Blueprint('auth', __name__)
 
@@ -29,6 +30,7 @@ def login():
         print("ok")
         #get otp และ send mail
         generate_otp()
+        send_otp_to_email(user.email, otp)
         
         # Redirect to otp.html upon successful login
         return redirect("/otp", code=302)

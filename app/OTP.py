@@ -1,9 +1,8 @@
 import random
 import string
-import time
-import smtplib
-from email.mime.multipart import MIMEMultipart
+# import time
 from email.mime.text import MIMEText
+import smtplib
 
 def generate_otp(length=6):
     otp = ''.join(random.choice(string.digits) for _ in range(length))
@@ -40,6 +39,17 @@ def reset_otp(receiver_email):
 # ตั้งเวลาให้ OTP หมดอายุภายใน 5 นาที
 # time.sleep(300)
 
-# รีเซ็ต OTP ใหม่
-# reset_otp(receiver_email)
-# เปลี่ยนOTPจากตัวอักษรเป็นตัวเลข6ตัว
+# หลังจากผ่านไป 1 นาที ให้สร้าง OTP ใหม่
+OTP_Code = generate_otp()
+print("Your new OTP is:", OTP_Code)
+
+def send_otp_to_email(email, otp):
+    msg = MIMEText(f"Your OTP is: {otp}")
+    msg['Subject'] = 'Your OTP Code'
+    msg['From'] = 'komkritgolf6@gmail.com'
+    msg['To'] = email
+    print("otp email:", otp)
+    with smtplib.SMTP('smtp.example.com') as server:
+        server.login('your-email@example.com', 'your-password')
+        server.sendmail('your-email@example.com', [email], msg.as_string())
+        
