@@ -3,6 +3,7 @@ import string
 from email.mime.text import MIMEText
 import smtplib
 import redis
+import time
 
 # เชื่อมต่อ Redis Server
 r = redis.Redis(host='localhost', port=6379, db=0)
@@ -29,8 +30,20 @@ def send_otp_email(email, otp):
         server.quit()
         print("OTP sent successfully!")
         
-        # เมื่อส่ง OTP สำเร็จ ให้เพิ่มข้อมูล email และ OTP ลงใน Redis
+        
         add_data(email, otp)
+        
+        # เริ่มตัวนับเวลาสำหรับลบ OTP หลังจากผ่านไป 10 วินาที
+        start_time = time.time()
+        while True:
+            current_time = time.time()
+            if current_time - start_time >= 60:
+                # ลบ OTP ที่เก็บใน Redis
+                delete_data(email)
+                print("OTP expired and deleted")
+                break
+            # ตรวจสอบทุกๆ 1 วินาที
+            time.sleep(1)
     except Exception as e:
         print(f"An error occurred: {e}")
 
@@ -38,5 +51,7 @@ def add_data(email, otp):
     r.set(email, otp)
     print(f"Data added: email={email}, OTP={otp}")
 
-
+def delete_data(email):
+    r.delete(email)
+    print(f"Data deleted: email={email}")
 
