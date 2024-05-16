@@ -37,12 +37,9 @@ def reset_otp(receiver_email):
     print("Your new OTP is:", OTP_Code)
     send_email(receiver_email, OTP_Code)
 
-# ส่ง OTP และรีเซ็ตหลังจาก 5 นาที
-receiver_email = "recipient@example.com"
-send_email(receiver_email, generate_otp())
-
-# รอ 5 นาที
-time.sleep(300)
+# ตั้งเวลาให้ OTP หมดอายุภายใน 5 นาที
+# time.sleep(300)
 
 # รีเซ็ต OTP ใหม่
-reset_otp(receiver_email)
+# reset_otp(receiver_email)
+# เปลี่ยนOTPจากตัวอักษรเป็นตัวเลข6ตัว

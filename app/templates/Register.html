@@ -29,26 +29,7 @@
 
         .register-container input[type="text"],
         .register-container input[type="password"],
-        .register-container input[type="date"] {
-            margin-bottom: 15px; 
-            padding: 10px; 
-            width: 100%; 
-            border: 1px solid #f48fb1; /* เส้นขอบสีชมพู */
-            border-radius: 4px; 
-            box-sizing: border-box; 
-        }
-
-        .name-surname-container {
-            display: flex; 
-            justify-content: space-between; 
-            width: 100%; 
-        }
-
-        .name-surname-container input {
-            width: 48%; 
-        }
-
-        .register-container select {
+        .register-container input[type="email"] {
             margin-bottom: 15px; 
             padding: 10px; 
             width: 100%; 
@@ -71,18 +52,9 @@
 </head>
 <body>
     <div class="register-container">
-        <input type="text" placeholder="username"> 
+        <input type="text" placeholder="Username"> 
         <input type="password" placeholder="Password"> 
-        <div class="name-surname-container">
-            <input type="text" placeholder="Name"> 
-            <input type="text" placeholder="Surname"> 
-        </div>
-        <input type="text" placeholder="Email"> 
-        <input type="date" placeholder="Birthday"> 
-        <select>
-            <option value="female">Female</option> 
-            <option value="male">Male</option> 
-        </select>
+        <input type="email" placeholder="Email"> 
         <button type="button" onclick="goToLoginPage()">Sign Up</button> 
     </div>
 
