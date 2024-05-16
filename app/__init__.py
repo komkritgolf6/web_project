@@ -4,7 +4,7 @@ from flask_jwt_extended import JWTManager
 from redis import Redis
 from flask_migrate import Migrate
 from config import Config  
-
+from .OTP import generate_otp
 db = SQLAlchemy()
 jwt = JWTManager()
 redis_client = Redis.from_url(Config.REDIS_URL)

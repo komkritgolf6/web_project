@@ -7,7 +7,7 @@
 </head>
 <body>
     <h2>Login</h2>
-    <form id="login-form">
+    <form id="login-form" action="/login" method="POST">
         <div>
             <label for="username">Username:</label><br>
             <input type="text" id="username" name="username" required><br>
@@ -17,11 +17,11 @@
             <input type="password" id="password" name="password" required><br>
         </div>
         <div>
-            <button type="submit">Login</button>
+            <button type="submit" >Login</button>
         </div>
     </form>
 
-    <script>
+    <!-- <script>
         document.getElementById("login-form").addEventListener("submit", function(event) {
             event.preventDefault();
             const formData = new FormData(this);
@@ -36,16 +36,15 @@
                 if (!response.ok) {
                     throw new Error("Network response was not ok");
                 }
-                return response.json();
+                return response
             })
             .then(data => {
                 console.log(data);
-                // จัดการการตอบสนองที่ได้รับจากเซิร์ฟเวอร์ที่นี่
             })
             .catch(error => {
                 console.error("There was an error!", error);
             });
         });
-    </script>
+    </script> -->
 </body>
 </html>
