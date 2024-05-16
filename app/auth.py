@@ -29,8 +29,8 @@ def login():
         print("Received password:", password)
         print("ok")
         #get otp และ send mail
-        generate_otp()
-        send_otp_email(user.email, otp_code='')
+        
+        send_otp_email(user.email, generate_otp())
         
         # Redirect to otp.html upon successful login
         return redirect("/otp", code=302)
