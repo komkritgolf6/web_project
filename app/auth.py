@@ -4,8 +4,9 @@ from werkzeug.security import check_password_hash, generate_password_hash
 from app.models import User
 from app import db
 from .OTP import generate_otp, send_otp_email
+import redis
 
-
+r = redis.Redis(host='localhost', port=6379, db=0)
 bp = Blueprint('auth', __name__)
 
 @bp.route('/login', methods=['POST'])
@@ -52,15 +53,18 @@ def register():
 def otp():
     return render_template('otp.html')
 
+
 @bp.route('/verify_token')
 def verify_token():
-    # Render the otp.html template
     print("verify_token")
     otp = request.args.get("otp")
     print(otp)
     
-    otp_db = User.query.filter_by(otp=otp).first()
+    # ตรวจสอบว่า OTP ที่รับมาตรงกับข้อมูลใดใน Redis หรือไม่
+    for key in r.keys():
+        if r.get(key).decode('utf-8') == otp:
+            access_token = create_access_token(identity=key.decode('utf-8'))  # ใช้ key เป็น identity
+            return jsonify({"msg": "Login Success", "access_token": access_token})
     
-    if otp == otp_db.otp:
-        access_token = create_access_token(identity=otp_db.username)
-        return jsonify({"msg": "Login Success", "access_token": access_token})
+    # ถ้าไม่พบ OTP ที่ตรงกัน
+    return jsonify({"msg": "Invalid OTP"})
