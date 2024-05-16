@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project Web Login</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #fce4ec; /* พื้นหลังสีชมพูอ่อน */
+        }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            width: 980px;
+            max-width: 100%;
+        }
+        .left-column {
+            flex: 1;
+            padding-right: 20px;
+        }
+        .left-column h1 {
+            font-size: 48px;
+            color: #444; /* สีเทาเข้ม */
+        }
+        .left-column p {
+            font-size: 24px;
+            color: #444; /* สีเทาเข้ม */
+        }
+        .right-column {
+            flex: 1;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+        }
+        .right-column h2 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #444; /* สีเทาเข้ม */
+        }
+        .right-column input[type="text"],
+        .right-column input[type="password"] {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            border: 1px solid #f48fb1; /* เส้นขอบสีชมพู */
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+        .right-column button {
+            width: 100%;
+            padding: 12px;
+            background-color: #f48fb1; /* สีชมพู */
+            border: none;
+            border-radius: 6px;
+            color: white;
+            font-size: 16px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+        .right-column button:hover {
+            background-color: #ff77c9; /* สีชมพูเข้ม */
+        }
+        .right-column .create-account {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            background-color: #ff77c9; /* สีชมพูเข้ม */
+            color: white;
+            border-radius: 6px;
+            text-decoration: none;
+        }
+        .right-column .create-account:hover {
+            background-color: #e650a2; /* เขียวเข้ม */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="left-column">
+            <h1>Project Web</h1>
+            <p>Sending work to P'Kit.</p>
+        </div>
+        <div class="right-column">
+            <h2>Log In</h2>
+            <form id="login-form" action="your_login_script.php" method="post">
+                <input type="text" name="username" placeholder="Username" required>
+                <input type="password" name="password" placeholder="Password" required>
+                <button type="submit">Log In</button>
+                <a href="Register.html" class="create-account">Create New Account</a>
+            </form>
+        </div>
+    </div>
+</body>
+</html>

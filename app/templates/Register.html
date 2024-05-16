@@ -7,87 +7,88 @@
     <style>
         body {
             display: flex;
-            justify-content: center; /* จัดให้อยู่กลางหน้าจอในแนวนอน */
-            align-items: center; /* จัดให้อยู่กลางหน้าจอในแนวตั้ง */
-            height: 100vh; /* ตั้งค่าให้มีความสูงเต็มหน้าจอ */
-            margin: 0; /* ตั้งค่า margin เป็น 0 เพื่อให้แนบกับขอบของหน้าจอ */
-            font-family: Arial, sans-serif; /* ตั้งค่าฟอนต์ */
-            background-color: #f0f0f0; /* ตั้งค่าสีพื้นหลัง */
+            justify-content: center; 
+            align-items: center; 
+            height: 100vh; 
+            margin: 0; 
+            font-family: Arial, sans-serif; 
+            background-color: #fce4ec; /* พื้นหลังสีชมพูอ่อน */
         }
 
         .register-container {
             display: flex;
-            flex-direction: column; /* จัดให้เป็นคอลัมน์ */
-            align-items: center; /* จัดให้อยู่ตรงกลางในแนวแกน X */
-            background-color: #fff; /* สีพื้นหลังของกล่องลงทะเบียน */
-            padding: 20px; /* ระยะห่างภายในกล่อง */
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* เงาของกล่อง */
-            border-radius: 8px; /* มุมกล่องโค้งมน */
-            width: 320px; /* ความกว้างของกล่อง */
-            box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
+            flex-direction: column; 
+            align-items: center; 
+            background-color: #fff; 
+            padding: 20px; 
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); 
+            border-radius: 8px; 
+            width: 320px; 
+            box-sizing: border-box; 
         }
 
         .register-container input[type="text"],
         .register-container input[type="password"],
         .register-container input[type="date"] {
-            margin-bottom: 15px; /* ระยะห่างระหว่างช่องกรอกข้อมูล */
-            padding: 10px; /* ระยะห่างภายในช่องกรอกข้อมูล */
-            width: 100%; /* ความกว้างของช่องกรอกข้อมูล */
-            border: 1px solid #ccc; /* เส้นขอบของช่องกรอกข้อมูล */
-            border-radius: 4px; /* มุมของช่องกรอกข้อมูลโค้งมน */
-            box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
+            margin-bottom: 15px; 
+            padding: 10px; 
+            width: 100%; 
+            border: 1px solid #f48fb1; /* เส้นขอบสีชมพู */
+            border-radius: 4px; 
+            box-sizing: border-box; 
         }
 
         .name-surname-container {
-            display: flex; /* จัดให้อยู่ในแถวเดียวกัน */
-            justify-content: space-between; /* กระจายช่องว่างระหว่างช่องกรอกข้อมูล */
-            width: 100%; /* ความกว้างเต็มของคอนเทนเนอร์ */
+            display: flex; 
+            justify-content: space-between; 
+            width: 100%; 
         }
 
         .name-surname-container input {
-            width: 48%; /* ความกว้าง 48% ของช่องกรอกข้อมูลในแต่ละช่อง *//
+            width: 48%; 
         }
 
         .register-container select {
-            margin-bottom: 15px; /* ระยะห่างระหว่างช่องกรอกข้อมูล */
-            padding: 10px; /* ระยะห่างภายในช่องกรอกข้อมูล */
-            width: 100%; /* ความกว้างของช่องกรอกข้อมูล */
-            border: 1px solid #ccc; /* เส้นขอบของช่องกรอกข้อมูล */
-            border-radius: 4px; /* มุมของช่องกรอกข้อมูลโค้งมน */
-            box-sizing: border-box; /* การคำนวณขนาดรวม padding และ border */
+            margin-bottom: 15px; 
+            padding: 10px; 
+            width: 100%; 
+            border: 1px solid #f48fb1; /* เส้นขอบสีชมพู */
+            border-radius: 4px; 
+            box-sizing: border-box; 
         }
 
         .register-container button {
-            padding: 10px; /* ระยะห่างภายในปุ่ม */
-            width: 100%; /* ความกว้างของปุ่ม */
-            background-color: #28a745; /* สีพื้นหลังของปุ่ม */
-            border: none; /* ไม่มีเส้นขอบ */
-            border-radius: 4px; /* มุมปุ่มโค้งมน */
-            color: white; /* สีของข้อความในปุ่ม */
-            font-size: 16px; /* ขนาดของข้อความในปุ่ม */
-            cursor: pointer; /* เปลี่ยนเคอร์เซอร์เป็นมือเมื่อวางเมาส์ */
+            padding: 10px; 
+            width: 100%; 
+            background-color: #f48fb1; /* สีพื้นหลังปุ่ม */
+            border: none; 
+            border-radius: 4px; 
+            color: white; 
+            font-size: 16px; 
+            cursor: pointer; 
         }
     </style>
 </head>
 <body>
     <div class="register-container">
-        <input type="text" placeholder="ID"> <!-- ช่องกรอกข้อมูล ID -->
-        <input type="password" placeholder="Password"> <!-- ช่องกรอกข้อมูล Password -->
+        <input type="text" placeholder="username"> 
+        <input type="password" placeholder="Password"> 
         <div class="name-surname-container">
-            <input type="text" placeholder="Name"> <!-- ช่องกรอกข้อมูล Name -->
-            <input type="text" placeholder="Surname"> <!-- ช่องกรอกข้อมูล Surname -->
+            <input type="text" placeholder="Name"> 
+            <input type="text" placeholder="Surname"> 
         </div>
-        <input type="date" placeholder="Birthday"> <!-- ช่องกรอกข้อมูล Birthday -->
+        <input type="text" placeholder="Email"> 
+        <input type="date" placeholder="Birthday"> 
         <select>
-            <option value="female">Female</option> <!-- ตัวเลือก Female -->
-            <option value="male">Male</option> <!-- ตัวเลือก Male -->
+            <option value="female">Female</option> 
+            <option value="male">Male</option> 
         </select>
-        <button type="button" onclick="goToLoginPage()">Sign Up</button> <!-- ปุ่ม Sign Up -->
+        <button type="button" onclick="goToLoginPage()">Sign Up</button> 
     </div>
 
     <script>
         function goToLoginPage() {
-            window.location.href = "/"; /* เปลี่ยน URL ไปยังหน้า Login */
+            window.location.href = "/"; 
         }
     </script>
 </body>
