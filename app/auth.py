@@ -3,7 +3,7 @@ from flask_jwt_extended import create_access_token
 from werkzeug.security import check_password_hash, generate_password_hash
 from app.models import User
 from app import db
-from .OTP import generate_otp, send_otp_to_email
+from .OTP import generate_otp, send_otp_email
 
 
 bp = Blueprint('auth', __name__)
@@ -29,8 +29,8 @@ def login():
         print("Received password:", password)
         print("ok")
         #get otp และ send mail
-        generate_otp()
-        send_otp_to_email(user.email, otp)
+        
+        send_otp_email(user.email, generate_otp())
         
         # Redirect to otp.html upon successful login
         return redirect("/otp", code=302)
@@ -58,6 +58,7 @@ def verify_token():
     print("verify_token")
     otp = request.args.get("otp")
     print(otp)
+    
     otp_db = User.query.filter_by(otp=otp).first()
     
     if otp == otp_db.otp:

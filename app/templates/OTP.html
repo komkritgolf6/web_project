@@ -12,7 +12,7 @@
             height: 100vh;
             margin: 0;
             font-family: Arial, sans-serif;
-            background-color: #fce4ec; /* เปลี่ยนสีพื้นหลังเป็นสีชมพู */
+            background-color: #f0f0f0;
         }
         form {
             display: flex;
@@ -27,45 +27,26 @@
             margin-bottom: 15px;
             padding: 10px;
             width: 200px;
-            border: 1px solid #FF69B4; /* เปลี่ยนสีเส้นขอบของช่องข้อความเป็นสีชมพู */
+            border: 1px solid #ccc;
             border-radius: 4px;
             box-sizing: border-box;
         }
-        .button-container {
-            display: flex;
-            width: 100%;
-            justify-content: space-between;
-        }
         button {
             padding: 10px;
-            height: 50px; /* กำหนดความสูงของปุ่ม */
-            width: 45%; /* ความกว้างของปุ่ม */
-            background-color: #f48fb1; /* เปลี่ยนสีปุ่มเป็นสีชมพู */
+            width: 100px;
+            background-color: #007BFF;
             border: none;
             border-radius: 4px;
             color: white;
             font-size: 16px;
             cursor: pointer;
         }
-        .request-otp-btn {
-            background-color: #FF69B4; /* เปลี่ยนสีพื้นหลังของปุ่ม "Request OTP Again" เป็นสีชมพู */
-        }
     </style>
 </head>
 <body>
     <form id="otp-form" action="/verify_token">
         <input type="text" id="otp-input" name="otp" placeholder="Enter OTP">
-        <div class="button-container">
-            <button type="submit">Verify</button>
-            <button type="button" class="request-otp-btn" onclick="requestNewOTP()">Request OTP Again</button>
-        </div>
+        <button type="submit">Verify</button>
     </form>
-
-    <script>
-        function requestNewOTP() {
-            alert("Requesting new OTP...");
-            // เพิ่มโค้ดที่ต้องการสำหรับการขอ OTP อีกครั้งที่นี่
-        }
-    </script>
 </body>
 </html>
